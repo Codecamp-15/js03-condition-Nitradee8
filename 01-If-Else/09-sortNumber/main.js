@@ -2,76 +2,119 @@
 // - แสดงผลลัพธ์เป็นตัวเลขที่เรียงกันจากมากไปน้อย  
 //   เช่นรับค่าเป็น -1 ,4, 0 ให้แสดงผลเป็น 4, 0, -1
 
-  // V1. Handle เลขที่ไม่เหมือนกัน
-  // V1. Handle เลขที่เหมือนกัน
+// let a = +prompt('FirstNumber');
+// let b = +prompt('SecondNumber');
+// let c = +prompt('ThirdNumber');
 
-  let x = Numberprompt('Enter number 1');
-  let y = +prompt('Enter number 2');
-  let z = prompt('Enter number 3') * 1;
+// if (a, b, c === null || a.trim(), b.trim(), c.trim() === '' || isNaN(a, b, c))
+//     alert('Invalid Number')
+// else if (a >= b && b >= c) { alert(`${a},${b},${c}`); }
+// else if (b >= c && c >= a) { alert(`${b},${c},${a}`); }
+// else if (c >= a && a >= b) { alert(`${c},${a},${b}`); }
+// else if (a >= b && b <= c && a >= c) { alert(`${a}, ${c},${b}`); }
+// else if (b >= a && b >= c && a >= c) { alert(`${b}, ${a}, ${c}`); }
+// else if (c >= a && c >= b && b >= a) { alert(`${c}, ${b}, ${a}`); }
 
-  // CASE1 : x มากสุด
-  // CASE2 : y มากสุด
-  // CASE3 : z มากสุด
-
-//   if(x > y && x > z) {
-//         console.log('MAX = ${x}');
-//   } else if(y > x && y > z) {
-//         console.log('MAX = ${y}');
-//   } else if(z > x && y > y) {
-//         console.log('MAX = ${z}');
-//   }
+// V.0 แสดงเฉำาะตัวที่มากที่สุด
 
 
-//   if(x > y && x > z) {
-//     MAX = x;
-// } else if(y > x && y > z) {
-//     MAX = y;
-// } else if(z > x && y > y) {
-//     MAX = z;
-// }
-//   console.log('MAX = $(max')
+let x = Number(prompt('Enter number 1'));
+let y = +prompt('Enter number 2');
+let z = prompt('Enter number 3') * 1;
+
+// V.0 แสดงเฉำาะตัวที่มากที่สุด
+// Case : X maximun
+// Case : Y Maximun
+// Case : Z Maximun
+// Dry Principle: Don't Repeat Yourself
+// let max;
+// if (x > y && x > z) max = x;//{ console.log(`MAX=${x}`); }
+// else if (y > x && y > z) max = y;//{ console.log(`MAX= ${y}`); }
+// else if (z > x && z > y) max = z; //{ console.log(`MAX= ${z}`); }
+
+// V.1 แสดงเฉพาะเลขที่ไม่เหมือนกัน --> แสดงผลตามลำดับ
+// Case : X maximun
+// 1A : y >z
+// 2A : z >y
+// Case : Y Maximun
+// Case : Z Maximun
 
 
 // let max;
-// let mid;
 // let min;
-
+// let mid;
 // if (x > y && x > z) {
 //     max = x;
-//     if (x > z) {
-//         mid = x;
-//         min = z;
-//     } else {
-//         mid = x;
+//     if (y > z) {
+//         mid = y;
 //         min = z;
 //     }
-// } else if (y > x && y > z) {
-//     max = y;
-//     if (x > z) {
-//         mid = x;
-//         min = z;
-//     } else {
-//         mid = x;
-//         min = z;
-//     }
-// } else if (y > x && y > z) {
-//     max = z;
-//     if (x > z) {
-//         mid = x;
-//         min = z;
-//     } else {
-//         mid = x;
-//         min = z;
+//     else {
+//         mid = z;
+//         min = y;
 //     }
 // }
-//   console.log('${MAX} : ${mid} : ${min}' );
+// else if (y > x && y > z) {
+//     max = y;
+//     if (x > z) {
+//         min = z;
+//         mid = x;
+//     }
+//     else {
+//         min = x;
+//         mid = z;
+//     }
+// }
+// else if (z > x && z > y) {
+//     max = z;
+//     if (x > y) {
+//         mid = x;
+//         min = y;
+//     }
+//     else {
+//         mid = y;
+//         max = x;
+//     };
+// }
 
+// console.log(`${max},${mid},${min}`);
 
-
-  if (x >= y && x >= z && y >= z); {
+// V.2 แสดงเฉพาะเลขที่เหมือนกัน
+let max;
+let min;
+let mid;
+if (x >= y && x >= z) {
     max = x;
-    mid = y;
-    min = z;
-  } else if (x >= y ) {
-    
-  }
+    if (y >= z) {
+        mid = y;
+        min = z;
+    }
+    else {
+        mid = z;
+        min = y;
+    }
+}
+else if (y >= x && y >= z) {
+    max = y;
+    if (x >= z) {
+        min = z;
+        mid = x;
+    }
+    else {
+        min = x;
+        mid = z;
+    }
+}
+else if (z >= x && z >= y) {
+    max = z;
+    if (x >= y) {
+        mid = x;
+        min = y;
+    }
+    else {
+        mid = y;
+        max = x;
+    };
+}
+
+console.log(`${max},${mid},${min}`);
